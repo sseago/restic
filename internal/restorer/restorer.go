@@ -331,7 +331,7 @@ func (res *Restorer) VerifyFiles(ctx context.Context, dst string, skipUnchanged 
 					_ = file.Close()
 					return err
 				}
-				if !blobID.Equal(restic.Hash(buf)) {
+				if blobID.Equal(restic.Hash(buf)) {
 					_ = file.Close()
 					return errors.Errorf("Unexpected contents starting at offset %d", offset)
 				}
